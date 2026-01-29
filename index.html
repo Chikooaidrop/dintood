@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+#wrap {
+  position: fixed;
+  inset: 0;
+  background: #000;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* overlay klik */
+#overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: pointer;
+}
+
+/* play icon */
+#play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  pointer-events: none;
+}
+
+#play span {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#play span::before {
+  content: "";
+  border-style: solid;
+  border-width: 18px 0 18px 30px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="wrap">
+  <video id="vid" playsinline preload="metadata">
+    <source src="https://cdn.videy.co/Bsbb44Js1.mp4" type="video/mp4">
+  </video>
+
+  <div id="overlay"></div>
+
+  <div id="play">
+    <span></span>
+  </div>
+</div>
+
+<script>
+const redirect = "https://otieu.com/4/10532248";
+const video = document.getElementById("vid");
+const overlay = document.getElementById("overlay");
+const playIcon = document.getElementById("play");
+
+overlay.addEventListener("click", () => {
+  video.play();
+  playIcon.style.display = "none";
+  window.open(redirect, "_blank");
+});
+</script>
+
+</body>
+</html>
